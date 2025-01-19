@@ -1,0 +1,10 @@
+@media (min-width:320px) and (max-width:425px){
+.reduceleftgap{
+    margin-left: 1px;
+    z-index: 1;
+    position: relative;
+}
+}
+@media (min-width:768px) and (max-width:1024px){
+   
+}

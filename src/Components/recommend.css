@@ -1,0 +1,20 @@
+.recommendimg{
+    height: 6.9em;
+    
+}
+
+@media (min-width: 320px) and (max-width:425px ){
+    .recommendgap{
+        width: 25em;
+        margin-left: -44px;
+        margin-bottom: 8px;
+    }
+}
+
+@media (min-width: 425px) and (max-width:1024px ){
+    .recommendgap{
+        width: 40em;
+        margin-left: -24px;
+        margin-bottom: 8px;
+    }
+}

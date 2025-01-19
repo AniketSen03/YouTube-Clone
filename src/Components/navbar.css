@@ -1,0 +1,24 @@
+@media (min-width: 320px) and (max-width:768px) {
+    .linesgap{
+        margin-left: 0;
+    }
+    .creategap{
+margin-right: 55px;
+    }
+    .removesearchbox{
+   display: none;
+ }
+ .reducegap{
+    margin: 0;
+ }
+ .circle{
+    border-radius: 50%;
+ }
+ .removemic{
+    display: none;
+  }
+  .removecreate{
+    display: none;
+    
+  }
+}

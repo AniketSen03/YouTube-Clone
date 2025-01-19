@@ -1,0 +1,22 @@
+@media (min-width: 320px) and (max-width:425px ) {
+.wrap{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-left: 15%;
+    padding-top: 20%;
+}}
+
+@media (min-width: 425px) and (max-width:1024px ) {
+    .wrap{
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        margin-left: 0%;
+        padding-top: 10%;
+    }}

@@ -1,0 +1,79 @@
+.toggle{
+    background-color: #3f3f46;
+    color: #ffff;
+}
+@media (min-width: 320px) and (max-width:425px ) {
+  
+    .iframesize{
+        width: 457px;
+        height: 257px;
+        margin-top: 10px;
+    }
+ .playvideoresponsive1{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 29em;
+}
+.titlesize{
+    font-size: 15px;
+    margin-left: 12px;
+}
+.adjustment{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    width: 35em;
+    font-size: 10px;
+}
+.descriptionsize{
+    font-size: 14px;
+  margin: 0 15px;
+}
+.commentsize1,.commentsize2{
+ margin-left: 20px;
+ margin-right: 45px;
+ text-align: justify;
+}
+}
+
+@media (min-width: 425px) and (max-width:1024px ) {
+  
+    .iframesize{
+        width: 657px;
+        height: 357px;
+        margin-top: 10px;
+    }
+ .playvideoresponsive1{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 42em;
+}
+.titlesize{
+    font-size: 15px;
+    margin-left: 8px;
+}
+.adjustment{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    width: 68em;
+    font-size: 10px;
+}
+.descriptionsize{
+    font-size: 17px;
+  margin: 0 5px;
+}
+.commentsize1,.commentsize2{
+ margin-left: 10px;
+ margin-right: 20px;
+ text-align: justify;
+}
+}

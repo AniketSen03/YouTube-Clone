@@ -1,0 +1,31 @@
+.active {
+    background-color: #3f3f46;
+    font-weight: bold;
+    padding-right: 35px;
+    border-radius: 15px;
+}
+.toggle{
+    display: none;
+}
+@media (min-width:320px) and (max-width:768px){
+.zindexsidebar{
+    position: absolute;
+    z-index: 2;
+width: 55%;
+background-color: black;
+transition: all 1s ease;
+display: flex;
+flex-direction: column;
+}
+}
+
+@media (min-width:768px) and (max-width:1440px){
+    .zindexsidebar{
+        width: 25%;
+    }
+}
+@media (min-width:1440px) and (max-width:2560px){
+    .zindexsidebar{
+        width: 14%;
+    }
+}
