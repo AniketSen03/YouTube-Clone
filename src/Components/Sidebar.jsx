@@ -33,13 +33,13 @@ const Sidebar = ({ toggle, category, setcategory }) => {
 
                     <button onClick={() => { setcategory() }}>
                         <li className=' ml-4 h-full my-2  flex items-center'>
-                            <img src="https://media.licdn.com/dms/image/v2/D4D03AQHhNy0usrFyGQ/profile-displayphoto-shrink_400_400/B4DZO.4mWSHUAg-/0/1734074330090?e=1741824000&v=beta&t=eHUUWjSipJV4q64KrgO5SDwFCLfjnBrRYyh8pr-euqU" alt="" className='rounded-full' width={24} />
+                            <img src="src/assets/Picsart_24-02-06_11-29-07-410.jpg" alt="" className='rounded-full' width={24} />
                             <span className='channelreduce text-xl ml-4'>Aniket Sen</span></li>
                     </button>
                     <button onClick={() => { setcategory() }}>
                         <li className=' ml-4 h-full my-2  flex items-center'>
-                            <img src="https://yt3.ggpht.com/Cxg32VJQ8whU-W10nrIvCc4vgiI10lYe6TLHvrGWZxWmqfcZV1lsr-16Z1FUd9Jt6vjFSqRa1g=s88-c-k-c0x00ffffff-no-rj" alt="" className='rounded-full' width={24} />
-                            <span className='channelreduce text-xl ml-4 '>Bhakti Karo 🕉️</span></li>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/1/12/DD_News_New_Logo.png" alt="" className='rounded-full' width={24} />
+                            <span className='channelreduce text-xl ml-4 '>DD News</span></li>
                     </button>
 
                     <button onClick={() => { setcategory() }}>
@@ -49,7 +49,7 @@ const Sidebar = ({ toggle, category, setcategory }) => {
                     </button>
                     <button className={`${category === 'UCx8Z14PpntdaxCt2hakbQLQ' ? 'active' : ''}`} onClick={() => { setcategory() }}>
                         <li className=' ml-4 h-full my-2  flex items-center'>
-                            <img src="https://yt3.ggpht.com/4tpv3CE1alB7ayIk-y1ktHsang1dMJkGf4f4dazy55G8j8Y0nGkEYnxNJ30JYOiPf6cCaaMARQ=s176-c-k-c0x00ffffff-no-rj-mo" alt="" className='rounded-full' width={24} />
+                            <img src="https://yt3.googleusercontent.com/CdR2ybs_Tz3mnJANjVWszTsYsSQbVmFUdYnqndK-K7j-tKRYH6Yz8gZpHb5bOvEtgFyHyAzMgQ=s900-c-k-c0x00ffffff-no-rj" alt="" className='rounded-full' width={24} />
                             <span className='channelreduce text-xl ml-4'>The Lallantop</span></li>
                     </button>
                     <button onClick={() => { setcategory() }}>
