@@ -33,7 +33,7 @@ const Sidebar = ({ toggle, category, setcategory }) => {
 
                     <button onClick={() => { setcategory() }}>
                         <li className=' ml-4 h-full my-2  flex items-center'>
-                            <img src="src/assets/Picsart_24-02-06_11-29-07-410.jpg" alt="" className='rounded-full' width={24} />
+                            <img src="https://media-bom2-2.cdn.whatsapp.net/v/t61.24694-24/491872716_1192376109025827_1592062212087948190_n.jpg?ccb=11-4&oh=01_Q5Aa1wGURYT4n_F3Yj6wfbAO01z4RgWjcPgzx_wSdCWzopb8NA&oe=68590D5E&_nc_sid=5e03e0&_nc_cat=104" alt="" className='rounded-full' width={24} />
                             <span className='channelreduce text-xl ml-4'>Aniket Sen</span></li>
                     </button>
                     <button onClick={() => { setcategory() }}>
