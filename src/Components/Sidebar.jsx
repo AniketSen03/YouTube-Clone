@@ -1,17 +1,21 @@
-import React, { useState } from 'react'
+import React, { useEffect } from 'react'
 import './sidebar.css'
 const Sidebar = ({ toggle, category, setcategory }) => {
 
+    useEffect(() => {
+        document.body.style.overflow = toggle ? 'hidden' : 'auto';
+    }, [toggle]);
+
     return (
         <>
-            <div className={`${toggle ? 'zindexsidebar transition-all 1s ease-in text-zinc-300 font-light small flex flex-col justify-center items-center float-left w-[14%]':'toggle'}`} >
-                <div className= 'list-none pt-4 mt-8 '>
+            <div className={`${toggle ? 'zindexsidebar transition-all duration-300 text-zinc-300 font-light small flex flex-col items-center w-[14%] h-screen' : 'toggle'}`}>
+                <div>
                     <button className={`${category === 0 ? 'active' : ''} `} onClick={() => { setcategory(0) }} >
                         <li className=' ml-4 h-full my-2  flex items-center '>
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" class="bi bi-house-door-fill" viewBox="0 0 16 16" >
                                 <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5" />
                             </svg>
-                            <span className='text-xl ml-4 '>Home</span></li>
+                            <span className='text-xl ml-4 hidden md:inline'>Home</span></li>
                     </button>
                     <button className={`${category === 42 ? 'active' : ''}`} onClick={() => { setcategory(42) }}>
                         <li className=' ml-4 h-full my-2  flex items-center '>
@@ -33,24 +37,24 @@ const Sidebar = ({ toggle, category, setcategory }) => {
 
                     <button onClick={() => { setcategory() }}>
                         <li className=' ml-4 h-full my-2  flex items-center'>
-                            <img src="https://media-bom2-2.cdn.whatsapp.net/v/t61.24694-24/491872716_1192376109025827_1592062212087948190_n.jpg?ccb=11-4&oh=01_Q5Aa1wGURYT4n_F3Yj6wfbAO01z4RgWjcPgzx_wSdCWzopb8NA&oe=68590D5E&_nc_sid=5e03e0&_nc_cat=104" alt="" className='rounded-full' width={24} />
+                            <img src="src/assets/my photoshoot update.jpg" alt="" className='rounded-full' width={24} />
                             <span className='channelreduce text-xl ml-4'>Aniket Sen</span></li>
                     </button>
                     <button onClick={() => { setcategory() }}>
                         <li className=' ml-4 h-full my-2  flex items-center'>
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/1/12/DD_News_New_Logo.png" alt="" className='rounded-full' width={24} />
-                            <span className='channelreduce text-xl ml-4 '>DD News</span></li>
+                            <img src="src/assets/images.jpg" alt="" className='rounded-full' width={24} />
+                            <span className='channelreduce text-xl ml-4 '>Sony Sab</span></li>
                     </button>
 
                     <button onClick={() => { setcategory() }}>
                         <li className=' ml-4 h-full my-2  flex items-center'>
-                            <img src="https://yt3.googleusercontent.com/ytc/AIdro_m1WLxquYeEO9VgyA7-cYFrn_hd2dSaNtmL8-NIHMCQIuPQ=s176-c-k-c0x00ffffff-no-rj-mo" alt="" className='rounded-full' width={24} />
+                            <img src="src/assets/Aaj_tak_logo.png" alt="" className='rounded-full' width={24} />
                             <span className='text-xl ml-4'>Aaj Tak</span></li>
                     </button>
                     <button className={`${category === 'UCx8Z14PpntdaxCt2hakbQLQ' ? 'active' : ''}`} onClick={() => { setcategory() }}>
                         <li className=' ml-4 h-full my-2  flex items-center'>
-                            <img src="https://yt3.googleusercontent.com/CdR2ybs_Tz3mnJANjVWszTsYsSQbVmFUdYnqndK-K7j-tKRYH6Yz8gZpHb5bOvEtgFyHyAzMgQ=s900-c-k-c0x00ffffff-no-rj" alt="" className='rounded-full' width={24} />
-                            <span className='channelreduce text-xl ml-4'>The Lallantop</span></li>
+                            <img src="src/assets/images.png" alt="" className='rounded-full' width={24} />
+                            <span className='channelreduce text-xl ml-4'>T-Series</span></li>
                     </button>
                     <button onClick={() => { setcategory() }}>
                         <li className=' ml-4 h-full my-2  flex items-center'>
@@ -62,7 +66,7 @@ const Sidebar = ({ toggle, category, setcategory }) => {
                 <div className=' items-center list-none pt-4 '>
                     <button onClick={() => { setcategory() }}>
                         <li className=' ml-4 h-full flex'>
-                            <span className='text-xl font-bold'>Explore</span></li>
+                            <span className='text-xl font-bold pr-1'>Explore</span></li>
 
                     </button>
                     <button className={`${category === 22 ? 'active' : ''}`} onClick={() => { setcategory() }}>

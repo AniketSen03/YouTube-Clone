@@ -2,14 +2,28 @@ import React, { useState } from 'react'
 import Sidebar from './Sidebar'
 import Feed from './Feed'
 
-const Home = ({toggle,converter,day}) => {
+const Home = ({ toggle, converter, day }) => {
   const [category, setcategory] = useState(0)
   return (
     <>
-   <Sidebar toggle={toggle} Sidebar={Sidebar} setcategory={setcategory}/>
-   <div className='flex flex-wrap justify-evenly items-center'>
-   <Feed converter={converter} day ={day} category={category}/>
-   </div>
+      <div className="flex pt-5">
+        {/* Sidebar */}
+        <Sidebar
+          toggle={toggle}
+          category={category}
+          setcategory={setcategory}
+        />
+
+        {/* Feed */}
+        <div className="flex-1">
+          <Feed
+            category={category}
+            converter={converter}
+            day={day}
+          />
+        </div>
+      </div>
+
     </>
   )
 }

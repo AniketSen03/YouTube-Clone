@@ -1,26 +1,84 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './sidebar.css'
 import './navbar.css'
+import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 
 const Navbar = ({ settoggle }) => {
+    const [searchQuery, setsearchQuery] = useState('')
+    const [suggestions, setSuggestions] = useState([]);
+    const [showSuggest, setShowSuggest] = useState(false);
+    const navigate = useNavigate();
+    const handleSearch = () => {
+        if (!searchQuery.trim()) return;
+        // for now just log (later we navigate or fetch)
+        navigate(`/search/${searchQuery}`)
+
+    }
+    useEffect(() => {
+        if (!searchQuery.trim()) {
+            setSuggestions([]);
+            return;
+        }
+
+        const timer = setTimeout(async () => {
+            const res = await axios.get(
+                `https://suggestqueries.google.com/complete/search`,
+                {
+                    params: {
+                        client: "firefox",
+                        ds: "yt",
+                        q: searchQuery,
+                    },
+                }
+            );
+            setSuggestions(res.data[1]);
+            setShowSuggest(true);
+        }, 400); // ✅ debounce
+
+        return () => clearTimeout(timer);
+    }, [searchQuery]);
+
     return (
         <>
-            <div className='bg-zinc-950  flex flex-wrap justify-evenly items-center h-14 py-1 fixed z-10 w-[100%] '>
-                <div className='flex items-center justify-center ml-5 linesgap'>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#a1a1aa" className='bi bi-list ' onClick={() => { settoggle(prev => prev === false ? true : false) }} viewBox="0 0 16 16" >
+            <div className='bg-zinc-950 flex items-center h-14 px-2 fixed z-10 w-full overflow-x-hidden '>
+                <div className='flex items-center ml-2 linesgap'>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#a1a1aa" className='bi bi-list ' onClick={() => { settoggle(prev => !prev) }} viewBox="0 0 16 16" >
                         <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
                     </svg>
                     <div className='flex items-center justify-center mx-4'>
-                        <img src="https://cdn3.iconfinder.com/data/icons/social-network-30/512/social-06-512.png" width="32"/>
+                        <img src="https://cdn3.iconfinder.com/data/icons/social-network-30/512/social-06-512.png" width="32" />
                         <h1 className=' text-zinc-300 font-semibold ml-2 creategap'>YOUTUBE <sup>IN</sup></h1>
                     </div>
 
                     {/* search bar */}
 
-                    <div className='reducegap flex items-center justify-evenly mx-52 '>
-                        <input type="search" className='removesearchbox border-zinc-500 border-t border-b border-l border-r rounded-l-full items-center 
-                        flex justify-between px-4 py-2 bg-transparent text-w text-white w-[35em]' placeholder='Search' />
-                        <div className='circle bg-zinc-600 text-zinc-300 p-[13px] rounded-r-full '>
+                    <div className='relative reducegap flex items-center justify-evenly md:mx-52'>
+                        <input
+                            type="search"
+                            value={searchQuery}
+                            onChange={(e) => setsearchQuery(e.target.value)}
+                            onFocus={() => setShowSuggest(true)}
+                            onBlur={() => setTimeout(() => setShowSuggest(false), 200)}
+                            className="removesearchbox border-zinc-500 border rounded-l-full px-4 py-2 bg-transparent text-white w-[35em] outline-none"
+                            placeholder="Search"
+                        />
+                        {showSuggest && suggestions.length > 0 && (
+                            <div className="absolute top-12 w-[35em] bg-zinc-900 rounded-lg z-50">
+                                {suggestions.map((s, i) => (
+                                    <div
+                                        key={i}
+                                        onClick={() => navigate(`/search/${s}`)}
+                                        className="px-4 py-2 hover:bg-zinc-800 cursor-pointer"
+                                    >
+                                        🔍 {s}
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+
+
+                        <div className='circle bg-zinc-950 text-zinc-300 p-[14px] rounded-full cursor-pointer' onClick={handleSearch}>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                                 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
                             </svg></div>

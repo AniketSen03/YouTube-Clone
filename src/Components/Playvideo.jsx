@@ -4,6 +4,7 @@ import axios from 'axios'
 import moment from 'moment'
 import './playvideo.css'
 import { useParams } from 'react-router'
+import Skeleton from './Skeleton'
 
 const Playvideo = ({ converter, day }) => {
     const [api, setapi] = useState(null)
@@ -45,11 +46,22 @@ const Playvideo = ({ converter, day }) => {
 
     return (
         <>
-            <div className=' float-left w-[60%] flex flex-col items-center'>
-                <iframe width="914" height="514" src={`https://www.youtube.com/embed/${videoid}?autoplay=1`} className='iframesize rounded-lg' frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <div className=' flex-1 text-white'>
+                <div className="w-full aspect-video">
+                    {!api ? (
+                        <Skeleton className="w-full h-full rounded-lg" />
+                    ) : (
+                        <iframe
+                            src={`https://www.youtube.com/embed/${videoid}?autoplay=1`}
+                            className="w-full h-full rounded-lg"
+                            allowFullScreen
+                        />
+                    )}
+                </div>
+
                 <div className='playvideoresponsive1 text-white flex flex-col justify-evenly'>
                     <h1 className='titlesize text-2xl mb-4 mt-2 font-bold '>{api?.snippet?.title || 'loading'}</h1>
-                    <div className='adjustment flex justify-evenly items-center capitalize'>
+                    <div className='adjustment flex items-center gap-2 overflow-x-auto whitespace-nowrap capitalize'>
 
                         <img src={imgdata ? imgdata.snippet.thumbnails.default.url : ''} alt=""
                             className='rounded-full h-8' />
@@ -80,7 +92,7 @@ const Playvideo = ({ converter, day }) => {
 
                         <div className='commentsize1 font-bold text-xl mt-3'>{converter(api?.statistics?.commentCount || '')} Comments</div>
                         {comment.map((data, i) => {
-                            return (<div className='commentsize2 mt-3' key={i}>
+                            return (<div className='mt-4 px-2' key={i}>
                                 <div className='flex mt-1'>
                                     <div>{data.snippet.topLevelComment.snippet.authorDisplayName}</div>
                                     <div className='ml-3'>{day(moment(data.snippet.topLevelComment.snippet.publishedAt).fromNow())}</div>
