@@ -37,23 +37,23 @@ const Sidebar = ({ toggle, category, setcategory }) => {
 
                     <button onClick={() => { setcategory() }}>
                         <li className=' ml-4 h-full my-2  flex items-center'>
-                            <img src="src/assets/my photoshoot update.jpg" alt="" className='rounded-full' width={24} />
+                            <img src="/my photoshoot update.jpg" alt="" className='rounded-full' width={24} />
                             <span className='channelreduce text-xl ml-4'>Aniket Sen</span></li>
                     </button>
                     <button onClick={() => { setcategory() }}>
                         <li className=' ml-4 h-full my-2  flex items-center'>
-                            <img src="src/assets/images.jpg" alt="" className='rounded-full' width={24} />
+                            <img src="/images.jpg" alt="" className='rounded-full' width={24} />
                             <span className='channelreduce text-xl ml-4 '>Sony Sab</span></li>
                     </button>
 
                     <button onClick={() => { setcategory() }}>
                         <li className=' ml-4 h-full my-2  flex items-center'>
-                            <img src="src/assets/Aaj_tak_logo.png" alt="" className='rounded-full' width={24} />
+                            <img src="/Aaj_tak_logo.png" alt="" className='rounded-full' width={24} />
                             <span className='text-xl ml-4'>Aaj Tak</span></li>
                     </button>
                     <button className={`${category === 'UCx8Z14PpntdaxCt2hakbQLQ' ? 'active' : ''}`} onClick={() => { setcategory() }}>
                         <li className=' ml-4 h-full my-2  flex items-center'>
-                            <img src="src/assets/images.png" alt="" className='rounded-full' width={24} />
+                            <img src="/images.png" alt="" className='rounded-full' width={24} />
                             <span className='channelreduce text-xl ml-4'>T-Series</span></li>
                     </button>
                     <button onClick={() => { setcategory() }}>
