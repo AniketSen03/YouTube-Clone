@@ -4,11 +4,43 @@ import './navbar.css'
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 
+const SpeechRecognition =
+    window.SpeechRecognition || window.webkitSpeechRecognition;
+
 const Navbar = ({ settoggle }) => {
     const [searchQuery, setsearchQuery] = useState('')
     const [suggestions, setSuggestions] = useState([]);
     const [showSuggest, setShowSuggest] = useState(false);
     const navigate = useNavigate();
+
+    const startVoiceSearch = () => {
+        if (!SpeechRecognition) {
+            alert("Mic not supported");
+            return;
+        }
+
+        const recognition = new SpeechRecognition();
+        recognition.lang = "en-IN";
+        recognition.interimResults = false;
+        recognition.maxAlternatives = 1;
+
+        recognition.start();
+
+        recognition.onresult = (event) => {
+            const text = event.results[0][0].transcript;
+            setsearchQuery(text);
+
+            setTimeout(() => {
+                navigate(`/search/${text}`);
+            }, 100);
+        };
+
+        recognition.onerror = (e) => {
+            console.error("Mic error:", e);
+        };
+    };
+
+
     const handleSearch = () => {
         if (!searchQuery.trim()) return;
         // for now just log (later we navigate or fetch)
@@ -39,6 +71,7 @@ const Navbar = ({ settoggle }) => {
         return () => clearTimeout(timer);
     }, [searchQuery]);
 
+
     return (
         <>
             <div className='bg-zinc-950 flex items-center h-14 px-2 fixed z-10 w-full overflow-x-hidden '>
@@ -60,7 +93,7 @@ const Navbar = ({ settoggle }) => {
                             onChange={(e) => setsearchQuery(e.target.value)}
                             onFocus={() => setShowSuggest(true)}
                             onBlur={() => setTimeout(() => setShowSuggest(false), 200)}
-                            className="removesearchbox border-zinc-500 border rounded-l-full px-4 py-2 bg-transparent text-white w-[35em] outline-none"
+                            className="removesearchbox border-zinc-500 border rounded-l-full px-4 py-2 bg-transparent text-white w-[18em] outline-none  sm:w-[24rem] md:w-[30rem] lg:w-[35rem]"
                             placeholder="Search"
                         />
                         {showSuggest && suggestions.length > 0 && (
@@ -68,8 +101,11 @@ const Navbar = ({ settoggle }) => {
                                 {suggestions.map((s, i) => (
                                     <div
                                         key={i}
-                                        onClick={() => navigate(`/search/${s}`)}
-                                        className="px-4 py-2 hover:bg-zinc-800 cursor-pointer"
+                                        onClick={() => {
+                                            setsearchQuery(s);
+                                            navigate(`/search/${s}`);
+                                            setShowSuggest(false);
+                                        }} className="px-4 py-2 hover:bg-zinc-800 cursor-pointer"
                                     >
                                         🔍 {s}
                                     </div>
@@ -82,7 +118,7 @@ const Navbar = ({ settoggle }) => {
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                                 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
                             </svg></div>
-                        <div className='removemic bg-zinc-600 text-zinc-300 w-8 rounded-full pt-2 pl-2 ml-2 h-8'>
+                        <div className='removemic bg-zinc-600 text-zinc-300 w-8 rounded-full pt-2 pl-2 ml-2 h-8 cursor-pointer' onClick={startVoiceSearch}>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-mic-fill" viewBox="0 0 16 16">
                                 <path d="M5 3a3 3 0 0 1 6 0v5a3 3 0 0 1-6 0z" />
                                 <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5" />

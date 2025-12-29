@@ -34,7 +34,7 @@ const App = () => {
     <>
       <div className='bg-zinc-950 min-h-screen'>
         <Navbar settoggle={settoggle} />
-        <div className="pt-14">
+        <div className="pt-5">
           <Routes>
             <Route path='/' element={<Home toggle={toggle} converter={converter} day={day} />} />
              {/* Category based */}

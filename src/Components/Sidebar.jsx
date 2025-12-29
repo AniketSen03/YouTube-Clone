@@ -1,11 +1,6 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import './sidebar.css'
 const Sidebar = ({ toggle, category, setcategory }) => {
-
-    useEffect(() => {
-        document.body.style.overflow = toggle ? 'hidden' : 'auto';
-    }, [toggle]);
-
     return (
         <>
             <div className={`${toggle ? 'zindexsidebar transition-all duration-300 text-zinc-300 font-light small flex flex-col items-center w-[14%] h-screen' : 'toggle'}`}>
